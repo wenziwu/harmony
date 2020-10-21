@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/skwair/harmony/discord"
 	"github.com/skwair/harmony/internal/payload"
 	"github.com/skwair/harmony/voice"
 )
@@ -21,12 +22,12 @@ func (c *Client) JoinVoiceChannel(ctx context.Context, guildID, channelID string
 	defer c.mu.Unlock()
 
 	if !c.isConnected() {
-		return nil, ErrGatewayNotConnected
+		return nil, discord.ErrGatewayNotConnected
 	}
 
 	// Check if we already have a voice connection in this guild.
 	if _, ok := c.voiceConnections[guildID]; ok {
-		return nil, ErrAlreadyConnectedToVoice
+		return nil, discord.ErrAlreadyConnectedToVoice
 	}
 
 	// This is used to notify the already started event handler that
@@ -74,7 +75,7 @@ func (c *Client) SwitchVoiceChannel(ctx context.Context, guildID string, channel
 
 	conn, ok := c.voiceConnections[guildID]
 	if !ok {
-		return ErrNotConnectedToVoice
+		return discord.ErrNotConnectedToVoice
 	}
 
 	vsu := &voice.StateUpdate{
