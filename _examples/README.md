@@ -4,7 +4,7 @@
 - 02.embed: demonstrates how to create a bot that replies with some rich embedded content when someone types the `!embed` command.
 - 03.files: shows how to send files when someone sends the `!file` command.
 - 04.auditlog: shows how to interact with the audit log of a guild.
-- 05.voice: a more complex example showcasing how to send voice data with a bot. Available commands: `!play`, `!stop`, `!leave`.
+- 05.voice: a more complex example showcasing how to send voice data with a bot. Available commands: `!play`, `!stop`, `!leave`. Note that this example requires the `ffmpeg` command to be installed and accessible in your `$PATH`.
 
 # Creating a Discord bot
 
@@ -21,7 +21,7 @@ In Discord, bots are attached to applications. So you will first need to create 
 ## Adding a bot to a server
 
 1. Go to [your applications](https://discord.com/developers/applications) and select the application linked to the bot you want to add to a server.
-2. In the `OAuth2` tab on the right, you will find an `OAUTH2 URL GENERATOR` section.
+2. In the `OAuth2` tab on the right, you will find an `OAUTH2 URL GENERATOR` section.
 3. Check the `Bot` checkbox under in the `SCOPES` list. A list of permissions will appear below the `SCOPES` list.
 4. Select which permissions you want your bot to have when added to a server. Note that those are the permissions your bot will ask, but it doesn't mean your bot users will grant them all. Also, note that if you don't select any permission here, your bot won't be able to do anything.
 4. Open the generated link in your browser, and select the server you want to add this bot to. Note that you need the Manage Server permission to be able to add a bot to a server.

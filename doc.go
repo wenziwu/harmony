@@ -17,7 +17,7 @@ but some methods (such as event handlers) won't be available until you
 connect to Discord's Gateway. You can do so by simply calling the Connect
 method of the Client:
 
-	if err = client.Connect(); err != nil {
+	if err = client.Connect(context.TODO()); err != nil {
 		// Handle error
 	}
 	defer client.Disconnect() // Gracefully disconnect
@@ -34,7 +34,7 @@ list of resources you can interact with:
 
 	- Guild
 	- Channel
-	- CurrentUser
+	- User
 	- Webhook
 	- Invite
 
@@ -48,13 +48,16 @@ to a channel:
 	}
 	// msg is the message sent
 
+Endpoints that do not fall into one of those resource (creating a Guild
+for example, or getting valid Voice Regions) are available on the Client.
+
 Registering event handlers
 
 To receive messages, use the OnMessageCreate method and give it your
 handler. It will be called each time a message is sent to a channel your
 bot is in with the message as a parameter.
 
-	client.OnMessageCreate(func(msg *harmony.Message) {
+	client.OnMessageCreate(func(msg *discord.Message) {
 		fmt.Println(msg.Content)
 	})
 
@@ -72,7 +75,7 @@ is constantly updated so it always have the newest data available.
 This session state acts as a cache to avoid making requests over the HTTP API
 each time. If you need to get information about the current user:
 
-	user := client.State.CurrentUser()
+	user := client.State.Me()
 
 Because this state might become memory hungry for bots that are in a very
 large number of servers, it can be disabled with the WithStateTracking option
