@@ -56,6 +56,8 @@ func WithChannelTopic(topic string) ChannelSetting {
 }
 
 // WithChannelBitrate sets the bit rate of a channel (audio only).
+// Must be a value between 8 and 96 for regular, non-premium channels
+// and can go up to 256 for Tier 2 guild and 384 for Tier 3 guilds.
 func WithChannelBitrate(bitrate int) ChannelSetting {
 	return func(s *ChannelSettings) {
 		s.Bitrate = optional.NewInt(bitrate)
@@ -70,9 +72,9 @@ func WithChannelUserLimit(limit int) ChannelSetting {
 }
 
 // WithChannelRateLimitPerUser sets the rate limit per user (text only).
-func WithChannelRateLimitPerUser(rateLimit int) ChannelSetting {
+func WithChannelRateLimitPerUser(rateLimit ChannelUserRateLimit) ChannelSetting {
 	return func(s *ChannelSettings) {
-		s.RateLimitPerUser = optional.NewInt(rateLimit)
+		s.RateLimitPerUser = optional.NewInt(int(rateLimit))
 	}
 }
 

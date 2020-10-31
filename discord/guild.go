@@ -46,12 +46,13 @@ const (
 // GuildAFKTimeout is the set of allowed values for AFK timeouts.
 type GuildAFKTimeout int
 
+// Valid Guild AFK timeouts:
 const (
-	GuildAFKTimeoutOneMinute      GuildAFKTimeout = 60
-	GuildAFKTimeoutFiveMinutes    GuildAFKTimeout = 300
-	GuildAFKTimeoutFifteenMinutes GuildAFKTimeout = 900
-	GuildAFKTimeoutThirtyMinutes  GuildAFKTimeout = 1800
-	GuildAFKTimeoutOneHour        GuildAFKTimeout = 3600
+	GuildAFKTimeout1m  GuildAFKTimeout = 60
+	GuildAFKTimeout5m  GuildAFKTimeout = 300
+	GuildAFKTimeout15m GuildAFKTimeout = 900
+	GuildAFKTimeout30m GuildAFKTimeout = 1800
+	GuildAFKTimeout1h  GuildAFKTimeout = 3600
 )
 
 // GuildDefaultNotificationLevel determines whether members who have not explicitly
