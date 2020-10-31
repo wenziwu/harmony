@@ -54,7 +54,7 @@ type Activity struct {
 	// Images for the presence and their hover texts.
 	Assets ActivityAssets `json:"assets"`
 	// Secrets for Rich Presence joining and spectating.
-	Secrets []interface{} `json:"secrets"`
+	Secrets ActivitySecrets `json:"secrets"`
 	// Whether or not the activity is an instanced game session.
 	Instance bool `json:"instance"`
 	// Activity flags ORd together, describes what the payload includes.
